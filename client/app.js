@@ -1,3 +1,5 @@
+import {getDestinations} from "./client";
+
 //toggle form animation
 document.addEventListener("DOMContentLoaded", function () {
   const toggleFormButton = document.getElementById("toggle-form");
@@ -14,3 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
   reviewForm = document.getElementById("reviewForm");
 // handleSubmit code...
 });
+
+
+const destinations = await getDestinations();
+for (let destination of destinations) {
+console.log("dest", destination);
+}
