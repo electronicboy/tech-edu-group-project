@@ -16,20 +16,18 @@ const pool = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
 })
 
-app.get("/destinations", (request, response) => {
-    /** @type {Result} */
-    pool.query("SELECT destination_id, destination_name, destination_img FROM project_destinations").then(results => {
-        if (results.rowCount > 0) {
-            const filtered = results.rows.map((entry) => {
-                return {
-                    id: entry.destination_id, name: entry.destination_name, img: entry.destination_img
-                }
-            })
-            response.json(filtered);
-        } else {
-            response.status(404).end();
-        }
-    })
+app.get("/destinations", async (request, response) => {
+    const results = await pool.query("SELECT destination_id, destination_name, destination_img FROM project_destinations")
+    if (results.rowCount > 0) {
+        const filtered = results.rows.map((entry) => {
+            return {
+                id: entry.destination_id, name: entry.destination_name, img: entry.destination_img
+            }
+        })
+        response.json(filtered);
+    } else {
+        response.status(404).end();
+    }
 })
 
 
