@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-getDestinations().then(destinations => {
-  for (let destination of destinations) {
-    console.log("dest", destination);
-  }
-})
+const destinations = await getDestinations();
+for (let destination of destinations) {
+console.log("dest", destination);
+}
