@@ -14,15 +14,18 @@ const pool = new pg.Pool({
  */
 async function addDestination(name, img) {
     // language=PostgreSQL
-    await pool.query("INSERT INTO project_destinations (destination_name, destination_img) VALUES ($1, $2)", [name, img]);
+    await pool.query("INSERT INTO project_destinations (destination_name, destination_img) VALUES ($1, $2) ON CONFLICT DO NOTHING", [name, img]);
 }
 
 async function addComment(destination, name, message, review) {
+    // language=PostgreSQL
     await pool.query("INSERT INTO project_comments (destination_id, comment_name, comment_message, comment_review) VALUES " +
-        "((SELECT destination_id FROM project_destinations WHERE project_destinations.destination_name = $1), $2, $3, $4)", [destination, name, message, review]);
+        "((SELECT destination_id FROM project_destinations WHERE project_destinations.destination_name = $1), $2, $3, $4) ON CONFLICT DO NOTHING", [destination, name, message, review]);
 }
 
-await addDestination("spain", null)
+await addDestination("Spain", null)
+await addDestination("France", null)
+await addDestination("Germany", null);
 await addComment("spain", "John Smith", "Grate place!", 5);
 
 
