@@ -22,7 +22,7 @@ async function addComment(destination, name, message, review) {
         "((SELECT destination_id FROM project_destinations WHERE project_destinations.destination_name = $1), $2, $3, $4)", [destination, name, message, review]);
 }
 
-await addDestination("spain")
+await addDestination("spain", null)
 await addComment("spain", "John Smith", "Grate place!", 5);
 
 
