@@ -14,7 +14,7 @@ const pool = new pg.Pool({
  */
 async function addDestination(name, img) {
     // language=PostgreSQL
-    await pool.query("INSERT INTO project_destinations (destination_name, destination_img) VALUES ($1, $2) ON CONFLICT DO NOTHING", [name, img]);
+    await pool.query("INSERT INTO project_destinations (destination_name, destination_img) VALUES ($1, $2) ON CONFLICT DO UPDATE SET destination_img = $2", [name, img]);
 }
 
 async function addComment(destination, name, message, review) {
