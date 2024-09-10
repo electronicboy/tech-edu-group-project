@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+.banner-container {
+    position: relative;
+    text-align: center;
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+}
+
+.country-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.reviews-form {
+    background-color: #dde2e4;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.toggle-form {
+    background-color: #005f99;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-content {
+    display: none;
+}
+
+.form-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content input, .form-content textarea, .form-content select, .form-content button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Responsive Grid for reviews cards*/
+.reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.footer {
+    background-color: #666666;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Desktop-specific Styles */
+@media (min-width: 769px) {
+    .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer {
+        background-color: #666666;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+}

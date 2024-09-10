@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <script type="module" src="app.js" defer></script>
+    <title>Country Reviews</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner-container">
+        <img src="./assets/images/banner.png" alt="Banner" class="banner" />
+        <div class="country-name">Country Name</div>
+      </div>
+
+      <div class="reviews-form">
+        <button id="toggle-form" class="toggle-form">Add Review</button>
+        <div id="form-content" class="form-content">
+          <form id="reviewForm">
+            <input
+              type="text"
+              placeholder="Enter your name"
+              id="nameInput"
+              required
+            />
+            <textarea
+              placeholder="Leave a review"
+              id="reviewInput"
+              required
+            ></textarea>
+            <select id="ratingInput">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="reviewsContainer" class="reviews-grid">
+        <!-- Previous reviews cards will be added here dynamically -->
+      </div>
+
+      <div class="footer">Footer</div>
+    </div>
+  </body>
+</html>
