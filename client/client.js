@@ -63,4 +63,4 @@ async function getReviews(destinationID) {
         return []; // empty for error (for now?)
     }
 }
-export {getDestinations, getDestination};
+export {getDestinations, getDestination, sendReview, getReviews};
