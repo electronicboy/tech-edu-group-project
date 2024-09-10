@@ -1,4 +1,4 @@
-const API = location.href.includes("localhost") ? "http://localhost:8081" : "https://travel-tech-ed-group-proj-server.onrender.com/";
+const API = location.href.includes("localhost") ? "http://localhost:8081" : "https://travel-tech-ed-group-proj-server.onrender.com";
 
 
 /**
