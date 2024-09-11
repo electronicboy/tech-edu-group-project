@@ -80,6 +80,13 @@ async function populateReviews() {
       <p>Rating: ${review.comment_review}/5</p>
       <p>Date: ${new Date(review.comment_date).toLocaleString()}</p>
     `;
+
+    // TODO: add like button here (we'll populate this with the current # of reviews)
+    // TODO: add delete button
+    /*
+    const likesElement = document.createElement('a');
+    reviewElement.appendChild(likesElement);
+     */
     reviewsContainer.appendChild(reviewElement);
   });
 }
