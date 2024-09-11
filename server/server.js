@@ -51,7 +51,7 @@ const {
         request.params.id,
         comment_name,
         comment_message,
-        comment_review]);
+        JSON.parse(comment_review)]);
     response.json(reviews.rows)
 })
 
