@@ -128,6 +128,9 @@ body {
     gap: 3rem;
     row-gap: 0rem;
     margin:50px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
  }
  
  
