@@ -40,7 +40,6 @@ await addDestination("Austria", "https://cdn.content.tuigroup.com/adamtui/2019_1
 
 await addDestination("Italy", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhOeEq44fYr1M1RbMqiZmafm8CqN8sgHhBA&s");
 
-
 await addComment("Spain", "John Smith", "Grate place!", 5);
 
 // wait for pool to stop
