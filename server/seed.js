@@ -41,6 +41,13 @@ await addDestination("Austria", "https://cdn.content.tuigroup.com/adamtui/2019_1
 await addDestination("Italy", "https://media.istockphoto.com/id/641205724/photo/val-dorcia-tuscany-italy.jpg?s=612x612&w=0&k=20&c=27XSZydMGm6q9yLuJ5Qqlu87jR1UBNTViSzHf3SfbWY=");
 
 await addComment("Spain", "John Smith", "Grate place!", 5);
+await addComment("Switzerland", "Michael Smith", "Nice natural attractions", 4);
+await addComment("France", "Adam Smith", "Great attractions like the Eiffel Tower and more", 5);
+await addComment("Germany", "Charlie Smith", "I love the beer and food in Germany", 5);
+await addComment("Italy", "George Smith", "Too expensive for my liking", 2);
+await addComment("Austria", "Charlotte Smith", "I really liked the atmosphere when i visited", 4);
+await addComment("Spain", "Maddison Smith", "I really liked the food and the country is very warm and the sun makes me happy", 5);
+
 
 // wait for pool to stop
 pool.end()
