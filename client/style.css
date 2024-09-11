@@ -38,7 +38,7 @@ body {
 
 .words span {
     display: inline-block;
-    letter-spacing: 0.8vw;
+    letter-spacing: 2vw;
     text-shadow: 0 15px 25px rgba(0,0,0,0.9);
     position: relative;
     transform: translateY(-100vh);
@@ -125,9 +125,11 @@ body {
  .imageContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+    gap: 3rem;
+    row-gap: 0rem;
     margin:50px;
  }
+ 
  
  .box {
     border: solid black 2px;
@@ -135,6 +137,8 @@ body {
     padding: 20px 0;
     margin-top: 80px;
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
  }
 
  .box-footer{
