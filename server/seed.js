@@ -14,7 +14,7 @@ const pool = new pg.Pool({
  */
 async function addDestination(name, img) {
     // language=PostgreSQL
-    await pool.query("INSERT INTO project_destinations (destination_name, destination_img) VALUES ($1, $2) ON CONFLICT DO UPDATE SET destination_img = $2", [name, img]);
+    await pool.query("INSERT INTO project_destinations (destination_name, destination_img) VALUES ($1, $2)", [name, img]);
 }
 
 async function addComment(destination, name, message, review) {
@@ -39,7 +39,6 @@ await addDestination("Switzerland", "https://www.blueroadstouring.com/sites/defa
 await addDestination("Austria", "https://cdn.content.tuigroup.com/adamtui/2019_10/10_16/4196212f-bf71-4928-b940-aae2010d7de9/AUS_SAA_F0093_tile.jpg");
 
 await addDestination("Italy", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhOeEq44fYr1M1RbMqiZmafm8CqN8sgHhBA&s");
-
 
 await addComment("Spain", "John Smith", "Grate place!", 5);
 
