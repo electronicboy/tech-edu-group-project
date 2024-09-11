@@ -25,6 +25,9 @@ async function populate() {
     for (let destination of destinations) {
         console.log("dest", destination);
         const container = document.createElement("div");
+        container.addEventListener("click", function () {
+            location.href = `/destination.html?destination=${destination.id}`;
+        })
         container.classList.add("box")
         const boxFooter = document.createElement("div");
         boxFooter.classList.add("box-footer");
