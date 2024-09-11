@@ -13,8 +13,10 @@ const destinationID = JSON.parse(destinationParam);
 async function populateInfo() {
   const response = await getDestination(destinationID)
   const countryNameHolder = document.getElementById("country-name");
+  const countryImageHolder = document.getElementById("country-banner");
   const {name, img, review} = response;
   countryNameHolder.textContent = name;
+  countryImageHolder.src = img;
   console.log(response)
 }
 
