@@ -22,7 +22,7 @@ async function handleSubmit(event) {
   const formData = new FormData(reviewForm);
   const data = Object.fromEntries(formData);
   console.log(data);
-  const destinationId = 11
+  const destinationId = 11 //need to get the actual id somehow
   const response = await fetch(`http://0.0.0.0:8081/reviews/${destinationId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -38,11 +38,11 @@ async function handleSubmit(event) {
 
 reviewForm.addEventListener("submit", handleSubmit);
 
-// Add a container to display the submitted reviews
+
 const reviewsContainer = document.getElementById("reviewsContainer");
 
 async function getReviews() {
-  const response = await fetch("http://0.0.0.0:8081/reviews/:id"); // Adjust the endpoint as needed
+  const response = await fetch("http://0.0.0.0:8081/reviews/:id"); 
   const reviews = await response.json();
 
   reviewsContainer.innerHTML = ""; // Clear the existing reviews
