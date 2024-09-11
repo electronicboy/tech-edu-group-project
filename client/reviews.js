@@ -44,7 +44,7 @@ async function handleSubmit(event) {
   console.log("From the server:", responseData);
 
   reviewForm.reset();
-  getReviews();
+  populateReviews()
 }
 
 reviewForm.addEventListener("submit", handleSubmit);
