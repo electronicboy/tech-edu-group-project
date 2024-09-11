@@ -1,3 +1,14 @@
+import {getReviews} from "./apiClient"
+
+const urlParams = new URLSearchParams(window.location.search);
+const destinationParam = urlParams.get('destination');
+if (destinationParam == null) {
+  // We don't have a target?!
+}
+
+/** @type {number} */
+const destinationID = JSON.parse(destinationParam);
+
 //toggle form animation
 document.addEventListener("DOMContentLoaded", function () {
   const toggleFormButton = document.getElementById("toggle-form");
@@ -41,9 +52,11 @@ reviewForm.addEventListener("submit", handleSubmit);
 
 const reviewsContainer = document.getElementById("reviewsContainer");
 
-async function getReviews() {
-  const response = await fetch("http://0.0.0.0:8081/reviews/:id"); 
-  const reviews = await response.json();
+async function populateReviews() {
+
+  const reviews = getReviews(destinationID)
+
+
 
   reviewsContainer.innerHTML = ""; // Clear the existing reviews
 
@@ -61,4 +74,4 @@ async function getReviews() {
   });
 }
 
-getReviews();
+populateReviews();

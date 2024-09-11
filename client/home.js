@@ -1,4 +1,4 @@
-import {getDestinations} from "./client";
+import {getDestinations} from "./apiClient";
 
 //toggle form animation
 document.addEventListener("DOMContentLoaded", function () {
