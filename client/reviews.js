@@ -54,7 +54,7 @@ const reviewsContainer = document.getElementById("reviewsContainer");
 
 async function populateReviews() {
 
-  const reviews = getReviews(destinationID)
+  const reviews = await getReviews(destinationID)
 
 
 
