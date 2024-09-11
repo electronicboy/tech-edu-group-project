@@ -52,15 +52,17 @@ async function sendReview(destinationID, reviewerName, reviewerComment, reviewer
 
 /**
  *
- * @param destinationID
- * @returns {Promise<{}[]>}
+ * @param id {number}
+ * @returns {Promise<void>}
  */
-async function getReviews(destinationID) {
-    const response = await fetch(`${API}/reviews/${destinationID}`)
+async function getReviews(id) {
+    const response = await fetch(`${API}/reviews/${id}`);
     if (response.ok) {
         return await response.json();
     } else {
         return []; // empty for error (for now?)
     }
 }
+
 export {getDestinations, getDestination, sendReview, getReviews};
+
