@@ -128,22 +128,36 @@ body {
     gap: 3rem;
     row-gap: 0rem;
     margin:50px;
+    margin: 100px 200px 50px 200px;
  }
  
  
  .box {
-    border: solid black 2px;
-    height: 200px;
+
+    height: 350px;
     padding: 20px 0;
     margin-top: 80px;
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
  }
+
+.box:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
 
  .box-footer{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
+    left: 10px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+
  }
 
  .footer {
