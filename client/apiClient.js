@@ -3,7 +3,7 @@ const API = location.href.includes("localhost") ? "http://localhost:8081" : "htt
 
 /**
  *
- * @returns {Promise<{id: number, name: string, img: string|null}[]>}
+ * @returns {Promise<Array.<{id: number, name: string, img: string|null}>>}
  */
 async function getDestinations() {
     const response = await fetch(`${API}/destinations`)
