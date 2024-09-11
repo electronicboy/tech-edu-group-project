@@ -38,7 +38,7 @@ await addDestination("Switzerland", "https://www.blueroadstouring.com/sites/defa
 
 await addDestination("Austria", "https://cdn.content.tuigroup.com/adamtui/2019_10/10_16/4196212f-bf71-4928-b940-aae2010d7de9/AUS_SAA_F0093_tile.jpg");
 
-await addDestination("Italy", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhOeEq44fYr1M1RbMqiZmafm8CqN8sgHhBA&s");
+await addDestination("Italy", "https://media.istockphoto.com/id/641205724/photo/val-dorcia-tuscany-italy.jpg?s=612x612&w=0&k=20&c=27XSZydMGm6q9yLuJ5Qqlu87jR1UBNTViSzHf3SfbWY=");
 
 await addComment("Spain", "John Smith", "Grate place!", 5);
 
