@@ -16,7 +16,7 @@ async function getDestinations() {
 
 /**
  *
- * @returns {Promise<{id: number, name: string, img: string|null}|null>}
+ * @returns {Promise<{id: number, name: string, img: string|null, review: number|null}|null>}
  */
 async function getDestination(id) {
     const response = await fetch(`${API}/destinations/${id}`);
