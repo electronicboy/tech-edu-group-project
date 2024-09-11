@@ -1,13 +1,26 @@
-import {getReviews, sendReview} from "./apiClient"
+import {getDestination, getReviews, sendReview} from "./apiClient"
 
 const urlParams = new URLSearchParams(window.location.search);
 const destinationParam = urlParams.get('destination');
 if (destinationParam == null) {
   // TODO: We don't have a target?!
+  location.href = "/" // No target, go home!
 }
 
 /** @type {number} */
 const destinationID = JSON.parse(destinationParam);
+
+async function populateInfo() {
+  const response = await getDestination(destinationID)
+  const countryNameHolder = document.getElementById("country-name");
+  const {name, img, review} = response;
+  countryNameHolder.textContent = name;
+  console.log(response)
+}
+
+if (destinationID !== null) {
+  populateInfo()
+}
 
 //toggle form animation
 document.addEventListener("DOMContentLoaded", function () {
@@ -69,4 +82,6 @@ async function populateReviews() {
   });
 }
 
-populateReviews();
+if (destinationID !== null) {
+  populateReviews();
+}

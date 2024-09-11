@@ -30,6 +30,23 @@ app.get("/destinations", async (request, response) => {
     }
 })
 
+app.get("/destinations/:id", async (request, response) => {
+    const results = await pool.query("SELECT destination_id, destination_name, destination_img, (SELECT AVG(comment_review) FROM project_comments pc WHERE pc.destination_id = pd.destination_id ) as destination_review FROM project_destinations pd WHERE pd.destination_id = $1", [request.params.id]);
+
+    if (results.rowCount == 1) {
+        const entry = results.rows[0];
+        const filtered = {
+            id: entry.destination_id, name: entry.destination_name, img: entry.destination_img, review: entry.destination_review
+        }
+        response.json(filtered);
+    } else if (results.rowCount == 0) {
+        response.status(404).end();
+    } else {
+        console.error(`found more than 1 entry for ${request.params.id}`)
+        response.status(500).end();
+    }
+})
+
 app.get("/reviews/:id", async (request, response) => {
     const reviews = await pool.query("SELECT * FROM project_comments WHERE destination_id = $1", [request.params.id]);
     response.json(reviews.rows)
