@@ -33,11 +33,13 @@ async function populate() {
         boxFooter.classList.add("box-footer");
         container.appendChild(boxFooter);
 
-        const nameHolder = document.createElement('span')
+        const nameHolder = document.createElement('div')
         nameHolder.textContent = destination.name;
+        nameHolder.classList.add("nameHolder")
         boxFooter.appendChild(nameHolder);
-        const reviewHolder = document.createElement('span')
-        reviewHolder.textContent = destination.review ? destination.review.toFixed(1) : "??"
+        const reviewHolder = document.createElement('div')
+        reviewHolder.textContent = destination.review ? destination.review.toFixed(1) + " out of 5": "??"
+        reviewHolder.classList.add("reviewHolder")
         boxFooter.appendChild(reviewHolder);
 
 
