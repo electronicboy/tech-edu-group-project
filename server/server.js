@@ -1,6 +1,6 @@
 import cors from "cors";
 import dotenv from "dotenv";
-import express from "express";
+import express, { request, response } from "express";
 import pg from "pg";
 
 dotenv.config();
@@ -28,6 +28,31 @@ app.get("/destinations", async (request, response) => {
     } else {
         response.status(404).end();
     }
+})
+
+app.get("/reviews/:id", async (request, response) => {
+    const reviews = await pool.query("SELECT * FROM project_comments WHERE destination_id = $1", [request.params.id]);
+    response.json(reviews.rows)
+    console.log(reviews.rows)
+})
+
+app.post("/reviews/:id", async (request, response) => {
+const {
+    comment_name,
+    comment_message,
+    comment_review
+} = request.body;
+
+   const reviews = await pool.query(`INSERT INTO project_comments(
+    destination_id,
+    comment_name,
+    comment_message,
+    comment_review) VALUES($1,$2,$3,$4)RETURNING *`, [
+        request.params.id,
+        comment_name,
+        comment_message,
+        comment_review]);
+    response.json(reviews.rows)
 })
 
 
