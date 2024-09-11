@@ -32,7 +32,17 @@ async function populate() {
         const boxFooter = document.createElement("div");
         boxFooter.classList.add("box-footer");
         container.appendChild(boxFooter);
-        boxFooter.innerText = destination.name;
+
+        const nameHolder = document.createElement('span')
+        nameHolder.textContent = destination.name;
+        boxFooter.appendChild(nameHolder);
+        const reviewHolder = document.createElement('span')
+        if (destination.review !== null) {
+            reviewHolder.textContent = destination.review.toFixed(10)
+            boxFooter.appendChild(reviewHolder);
+        }
+
+
         container.style.backgroundImage = `url('${destination.img}')`;
         imageContainer.appendChild(container);
     }

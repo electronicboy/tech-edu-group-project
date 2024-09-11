@@ -21,7 +21,7 @@ app.get("/destinations", async (request, response) => {
     if (results.rowCount > 0) {
         const filtered = results.rows.map((entry) => {
             return {
-                id: entry.destination_id, name: entry.destination_name, img: entry.destination_img, review: entry.destination_review
+                id: entry.destination_id, name: entry.destination_name, img: entry.destination_img, review: Number(entry.destination_review)
             }
         })
         response.json(filtered);
