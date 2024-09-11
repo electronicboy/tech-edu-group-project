@@ -3,7 +3,7 @@ import {getReviews} from "./apiClient"
 const urlParams = new URLSearchParams(window.location.search);
 const destinationParam = urlParams.get('destination');
 if (destinationParam == null) {
-  // We don't have a target?!
+  // TODO: We don't have a target?!
 }
 
 /** @type {number} */
