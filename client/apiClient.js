@@ -27,4 +27,15 @@ async function getDestination(id) {
     }
 }
 
-export {getDestinations, getDestination};
+
+/**
+ *
+ * @param id {number}
+ * @returns {Promise<void>}
+ */
+async function getReviews(id) {
+    const response = await fetch(`${API}/reviews/${id}`);
+    return await response.json();
+}
+
+export {getDestinations, getDestination, getReviews};
