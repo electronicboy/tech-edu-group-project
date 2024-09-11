@@ -33,21 +33,20 @@ async function getDestination(id) {
  * @param reviewerName {string} Name of the reviewer
  * @param reviewerComment {string} Reviewers comment
  * @param reviewerRating {number} reviewer rating
- * @returns {Promise<boolean>}
+ * @returns {Promise<Response>}
  */
 async function sendReview(destinationID, reviewerName, reviewerComment, reviewerRating) {
-    const response = await fetch(`${API}/reviews/${destinationID}`, {
+    return await fetch(`${API}/reviews/${destinationID}`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name: reviewerName,
-            comment: reviewerComment,
-            rating: reviewerRating
+            comment_name: reviewerName,
+            comment_message: reviewerComment,
+        comment_review: reviewerRating
         })
     });
-    return response.ok;
 }
 
 /**

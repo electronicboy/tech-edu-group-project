@@ -1,4 +1,4 @@
-import {getReviews} from "./apiClient"
+import {getReviews, sendReview} from "./apiClient"
 
 const urlParams = new URLSearchParams(window.location.search);
 const destinationParam = urlParams.get('destination');
@@ -33,14 +33,9 @@ async function handleSubmit(event) {
   const formData = new FormData(reviewForm);
   const data = Object.fromEntries(formData);
   console.log(data);
-  const destinationId = 11 //need to get the actual id somehow
-  const response = await fetch(`http://0.0.0.0:8081/reviews/${destinationId}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
+  const response = await sendReview(destinationID, data.comment_name, data.comment_message, data.comment_review)
+  const responseData = await response.json()
 
-  const responseData = await response.json();
   console.log("From the server:", responseData);
 
   reviewForm.reset();

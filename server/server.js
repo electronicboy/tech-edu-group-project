@@ -33,7 +33,7 @@ app.get("/destinations", async (request, response) => {
 app.get("/reviews/:id", async (request, response) => {
     const reviews = await pool.query("SELECT * FROM project_comments WHERE destination_id = $1", [request.params.id]);
     response.json(reviews.rows)
-    console.log(reviews.rows)
+    console.log("review", reviews.rows)
 })
 
 app.post("/reviews/:id", async (request, response) => {
