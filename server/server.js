@@ -17,11 +17,11 @@ const pool = new pg.Pool({
 })
 
 app.get("/destinations", async (request, response) => {
-    const results = await pool.query("SELECT destination_id, destination_name, destination_img FROM project_destinations")
+    const results = await pool.query("SELECT destination_id, destination_name, destination_img, (SELECT AVG(comment_review) FROM project_comments pc WHERE pc.destination_id = pd.destination_id ) as destination_review FROM project_destinations pd")
     if (results.rowCount > 0) {
         const filtered = results.rows.map((entry) => {
             return {
-                id: entry.destination_id, name: entry.destination_name, img: entry.destination_img
+                id: entry.destination_id, name: entry.destination_name, img: entry.destination_img, review: entry.destination_review
             }
         })
         response.json(filtered);
