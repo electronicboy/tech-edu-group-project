@@ -12,21 +12,78 @@ body {
 .navbar{
     width: 100%;
     position: fixed;
-    margin: auto;
     padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
     color:white;
     background-color: black;
-
 }
 
 .navbar a{
-    text-decoration: none;
-
     text-transform: uppercase;
 }
+
+.words {
+    width: 90%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: -30%;
+    left: 50%;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+
+.words span {
+    display: inline-block;
+    letter-spacing: 0.8vw;
+    text-shadow: 0 15px 25px rgba(0,0,0,0.9);
+    position: relative;
+    transform: translateY(-100vh);
+    animation: fall 3.5s forwards;
+}
+@keyframes fall{
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.words span:nth-child(2) {
+    animation-delay: 0.7s;
+}
+.words span:nth-child(3) {
+    animation-delay: 1.4s;
+}
+.words span:nth-child(4) {
+    animation-delay: 2.1s;
+}
+.words span:nth-child(6) {
+    animation-delay: 2.8s;
+}
+.words span:nth-child(7) {
+    animation-delay: 3.5s;
+}
+.words span:nth-child(9) {
+    animation-delay: 4.2s;
+}
+.words span:nth-child(10) {
+    animation-delay: 4.9s;
+}
+.words span:nth-child(11) {
+    animation-delay: 5.6s;
+}
+.words span:nth-child(12) {
+    animation-delay: 6.3s;
+}
+.words span:nth-child(13) {
+    animation-delay: 7.0s;
+}
+.words span:nth-child(14) {
+    animation-delay: 7.7s;
+}
+
+
 .navbar ul li{
     list-style: none;
     display: inline-block;
@@ -104,6 +161,16 @@ body {
     .logo{
         font-size: 30px;
         margin-left: 5px;
-        
     }
-  };
+}   
+@media (max-width: 800px){
+    .words {
+        font-size: 30px;
+    } 
+}
+
+@media (max-width: 550px){
+    .words {
+        font-size: 20px;
+    } 
+}
