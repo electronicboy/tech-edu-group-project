@@ -79,6 +79,7 @@ async function populateReviews() {
       <p>${review.comment_message}</p>
       <p>Rating: ${review.comment_review}/5</p>
       <p>Date: ${new Date(review.comment_date).toLocaleString()}</p>
+      <p>Likes: <span class="likes-count">${review.comment_likes}</span></p>
     `;
 
     const deleteElement = document.createElement("button");
@@ -91,6 +92,18 @@ async function populateReviews() {
     likesElement.innerHTML = "Like"
 
     // TODO: add like button here (we'll populate this with the current # of reviews)
+    likesElement.addEventListener('click', async function() {
+      const response = await fetch(`http://localhost:8081/reviews/${review.comment_id}/like`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json", }
+      });
+
+        const data = await response.json()
+        console.log(data)
+        const likesCountElement = reviewElement.querySelector('.likes-count')
+        likesCountElement.textContent = data.likes
+      });
     // TODO: add delete button
     /*
     const likesElement = document.createElement('a');
