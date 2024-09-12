@@ -91,7 +91,7 @@ try {
 } catch (error) {
     console.error(error);
     response.status(500).json({ error: "Internal Server Error" });
-} 
+}})
 
 app.delete("/reviews/:commentID", async (request, response) => {
     const commentID = request.params.commentID
