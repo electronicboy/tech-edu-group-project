@@ -93,6 +93,14 @@ try {
     response.status(500).json({ error: "Internal Server Error" });
 } 
 
+app.delete("/reviews/:commentID", async (request, response) => {
+    const commentID = request.params.commentID
+    const queryResponse = await pool.query('DELETE FROM project_comments WHERE comment_id = $1', [commentID])
+    if(queryResponse.rowCount > 0) {
+        response.status(200).end();   
+    } else{
+        response.status(404).end();
+    }
 })
 
 app.listen(port, () => {

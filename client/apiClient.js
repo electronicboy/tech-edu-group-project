@@ -49,6 +49,13 @@ async function sendReview(destinationID, reviewerName, reviewerComment, reviewer
     });
 }
 
+async function deleteReview(commentID) {
+    const response = await fetch(`${API}/reviews/${commentID}`, {
+        method: 'DELETE'
+    })
+    return response.ok
+}
+
 /**
  *
  * @param id {number}
@@ -81,5 +88,5 @@ async function likeReview(reviewId) {
     }
 }
 
-export {getDestinations, getDestination, sendReview, getReviews, likeReview};
+export {getDestinations, getDestination, sendReview, getReviews, deleteReview, likeReview};
 
