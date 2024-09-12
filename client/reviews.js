@@ -1,4 +1,4 @@
-import {getDestination, getReviews, sendReview} from "./apiClient"
+import {getDestination, getReviews, sendReview, deleteReview} from "./apiClient"
 
 const urlParams = new URLSearchParams(window.location.search);
 const destinationParam = urlParams.get('destination');
@@ -84,6 +84,13 @@ async function populateReviews() {
     const deleteElement = document.createElement("button");
     deleteElement.className = "deleteElement";
     deleteElement.innerHTML = "Delete";
+
+    deleteElement.addEventListener("click", async function(){
+      if (deleteReview(review.comment_id)) {
+        reviewElement.remove()
+      }
+      
+    })
 
 
     const likesElement = document.createElement("button");
