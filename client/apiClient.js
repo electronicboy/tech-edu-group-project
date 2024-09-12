@@ -49,6 +49,13 @@ async function sendReview(destinationID, reviewerName, reviewerComment, reviewer
     });
 }
 
+async function deleteReview(commentID) {
+    const response = await fetch(`${API}/reviews/${commentID}`, {
+        method: 'DELETE'
+    })
+    return response.ok
+}
+
 /**
  *
  * @param id {number}
@@ -63,5 +70,5 @@ async function getReviews(id) {
     }
 }
 
-export {getDestinations, getDestination, sendReview, getReviews};
+export {getDestinations, getDestination, sendReview, getReviews, deleteReview};
 
