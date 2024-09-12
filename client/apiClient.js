@@ -70,5 +70,23 @@ async function getReviews(id) {
     }
 }
 
-export {getDestinations, getDestination, sendReview, getReviews, deleteReview};
+/**
+ *
+ * @param reviewId {number}
+ * @returns {Promise<{likes:number}|null>}
+ */
+async function likeReview(reviewId) {
+    const response = await fetch(`${API}/reviews/${reviewId}/like`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json", }
+      });
+      if (response.ok) {
+        return await response.json();
+    } else {
+        return null; 
+    }
+}
+
+export {getDestinations, getDestination, sendReview, getReviews, deleteReview, likeReview};
 

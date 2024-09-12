@@ -1,4 +1,4 @@
-import {getDestination, getReviews, sendReview, deleteReview} from "./apiClient"
+import {getDestination, getReviews, sendReview, deleteReview, likeReview} from "./apiClient"
 
 const urlParams = new URLSearchParams(window.location.search);
 const destinationParam = urlParams.get('destination');
@@ -79,6 +79,7 @@ async function populateReviews() {
       <p>${review.comment_message}</p>
       <p>Rating: ${review.comment_review}/5</p>
       <p>Date: ${new Date(review.comment_date).toLocaleString()}</p>
+      <p>Likes: <span class="likes-count">${review.comment_likes}</span></p>
     `;
 
     const deleteElement = document.createElement("button");
@@ -97,12 +98,18 @@ async function populateReviews() {
     likesElement.className = "likesElement"
     likesElement.innerHTML = "Like"
 
-    // TODO: add like button here (we'll populate this with the current # of reviews)
-    // TODO: add delete button
-    /*
-    const likesElement = document.createElement('a');
-    reviewElement.appendChild(likesElement);
-     */
+    likesElement.addEventListener('click', async function() {
+        const data = await likeReview(review.comment_id)
+        if (data){
+          const likesCountElement = reviewElement.querySelector('.likes-count')
+          likesCountElement.textContent = data.likes
+        }
+        else{
+          console.error('Failed to add like')
+        }
+      });
+
+
     reviewsContainer.appendChild(reviewElement);
     reviewElement.appendChild(likesElement);
     reviewElement.appendChild(deleteElement);

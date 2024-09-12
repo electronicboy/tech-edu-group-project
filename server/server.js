@@ -72,6 +72,27 @@ const {
     response.json(reviews.rows)
 })
 
+app.post("/reviews/:id/like", async (request, response) => {
+    const reviewId = request.params.id
+    const updateLikesQuery = `
+    UPDATE project_comments
+    SET comment_likes = comment_likes + 1
+    WHERE comment_id = $1
+    RETURNING comment_likes
+`;
+
+try {
+    const result = await pool.query(updateLikesQuery, [reviewId]);
+    if (result.rowCount === 1) {
+        response.json({ likes: result.rows[0].comment_likes });
+    } else {
+        response.status(404).json({ error: "Review not found" });
+    }
+} catch (error) {
+    console.error(error);
+    response.status(500).json({ error: "Internal Server Error" });
+} 
+
 app.delete("/reviews/:commentID", async (request, response) => {
     const commentID = request.params.commentID
     const queryResponse = await pool.query('DELETE FROM project_comments WHERE comment_id = $1', [commentID])
