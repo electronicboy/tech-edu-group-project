@@ -72,6 +72,15 @@ const {
     response.json(reviews.rows)
 })
 
+app.delete("/reviews/:commentID", async (request, response) => {
+    const commentID = request.params.commentID
+    const queryResponse = await pool.query('DELETE FROM project_comments WHERE comment_id = $1', [commentID])
+    if(queryResponse.rowCount > 0) {
+        response.status(200).end();   
+    } else{
+        response.status(404).end();
+    }
+})
 
 app.listen(port, () => {
     console.log(`Server is now listening on http://0.0.0.0:${port}`)
