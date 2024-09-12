@@ -1,4 +1,4 @@
-import {getDestination, getReviews, sendReview} from "./apiClient"
+import {getDestination, getReviews, sendReview, likeReview} from "./apiClient"
 
 const urlParams = new URLSearchParams(window.location.search);
 const destinationParam = urlParams.get('destination');
@@ -91,24 +91,18 @@ async function populateReviews() {
     likesElement.className = "likesElement"
     likesElement.innerHTML = "Like"
 
-    // TODO: add like button here (we'll populate this with the current # of reviews)
     likesElement.addEventListener('click', async function() {
-      const response = await fetch(`http://localhost:8081/reviews/${review.comment_id}/like`, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json", }
+        const data = await likeReview(review.comment_id)
+        if (data){
+          const likesCountElement = reviewElement.querySelector('.likes-count')
+          likesCountElement.textContent = data.likes
+        }
+        else{
+          console.error('Failed to add like')
+        }
       });
 
-        const data = await response.json()
-        console.log(data)
-        const likesCountElement = reviewElement.querySelector('.likes-count')
-        likesCountElement.textContent = data.likes
-      });
-    // TODO: add delete button
-    /*
-    const likesElement = document.createElement('a');
-    reviewElement.appendChild(likesElement);
-     */
+
     reviewsContainer.appendChild(reviewElement);
     reviewElement.appendChild(likesElement);
     reviewElement.appendChild(deleteElement);
